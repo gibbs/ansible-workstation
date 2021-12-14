@@ -10,7 +10,7 @@
     cmd: ssh-keygen -f ~/.ssh/id_rsa -q -N ''
     creates: ~/.ssh/id_rsa
 
-- name: create gtk directories
+- name: create various directories
   ansible.builtin.file:
     path: "{{ item }}"
     owner: "{{ ansible_user_id }}"
@@ -20,6 +20,9 @@
   loop:
     - $HOME/.config/gtk-3.0/
     - $HOME/.config/gtk-4.0/
+    - $HOME/.config/nitrogen/
+    - $HOME/.config/nitrogen/wallpapers/
+    - $HOME/.wallpapers/
 
 - name: set gtk 3.0 settings
   ansible.builtin.copy:

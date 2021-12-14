@@ -12,18 +12,29 @@ desktop_pip_packages:
   - i3ipc
 
 desktop_vscode_extensions:
-  - iocave.monkey-patch
-  - iocave.customize-ui
+  - alefragnani.project-manager
+  - atlassian.atlascode
+  - bbenoist.vagrant
   - chenxsan.vscode-standardjs
+  - christopherafbjur.vscode-theme-onedarker
   - compulim.vscode-clock
+  - coolbear.systemd-unit-file
   - dbaeumer.vscode-eslint
+  - digitalbrainstem.javascript-ejs-support
   - editorconfig.editorconfig
+  - eseom.nunjucks-template
   - golang.go
+  - gruntfuggly.activitusbar
   - hashicorp.terraform
-  - vscodevim.vim
-  - qinjia.seti-icons
-  - joelcrosby.one-dark-darker
+  - iocave.customize-ui
+  - iocave.monkey-patch
+  - mikestead.dotenv
   - mrmlnc.vscode-duplicate
-  - puppet.puppet-vscode
   - neilbrayfield.php-docblocker
-
+  - puppet.puppet-vscode
+  - qinjia.seti-icons
+  - redhat.vscode-yaml
+  - syler.sass-indented
+  - tommorris.mako
+  - vscodevim.vim
+  - wwm.better-align

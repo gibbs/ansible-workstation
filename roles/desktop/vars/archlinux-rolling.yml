@@ -1,23 +1,31 @@
 desktop_base_packages:
   - arc-gtk-theme
   - alsa-utils
+  - baobab
   - chromium
+  - conky
+  - compton
   - dbeaver
   - docker
   - docker-compose
   - firefox
+  - filezilla
   - gedit
   - gimp
   - gnome-control-center
   - gnome-keyring
   - gnome-terminal
+  - gparted
   - gvfs
   - htop
   - libsecret
   - lxappearance
   - nautilus
+  - neovim
   - nitrogen
+  - ntfs-3g
   - npm
+  - pacman-contrib
   - polkit-gnome
   - ranger
   - rhythmbox
@@ -34,13 +42,13 @@ desktop_base_packages:
   - xorg-xprop
 
 desktop_aur_packages:
-  - qogir-icon-theme
   - dbeaver-ee
   - google-chrome
   - nvm
   - insomnia-bin
+  - powerline-fonts-git
+  - powerline-shell-git
+  - qogir-icon-theme
   - rvm
   - torguard
   - visual-studio-code-bin
-  - powerline-fonts-git
-  - powerline-shell-git

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # @fixme A better approach to this
-move_files=( ~/.bashrc ~/.gitconfig ~/.vimrc ~/.config/fontconfig/fonts.conf ~/.tmux.conf )
+move_files=( ~/.bashrc ~/.gitconfig ~/.vimrc ~/.config/fontconfig/fonts.conf ~/.tmux.conf ~/.config/nitrogen/ )
 mkdir -p ~/tmp/dotfiles/
 
 for filepath in "${move_files[@]}"; do
