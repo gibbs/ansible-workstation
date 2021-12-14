@@ -1,5 +1,7 @@
 # Ansible Workstation
 
+![Ansible Lint](https://github.com/gibbs/ansible-workstation/actions/workflows/test.yml/badge.svg)
+
 Ansible and bash scripts for bootstrapping/provisioning my personal desktop
 environment.
 

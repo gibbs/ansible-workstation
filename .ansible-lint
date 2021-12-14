@@ -1,4 +1,6 @@
+exclude_paths:
+  - .cache/
+  - .github/
+
 skip_list:
-  - 'yaml'
-  - 'no-handler'
-  - 'role-name'
+  - metadata

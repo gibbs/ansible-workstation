@@ -2,7 +2,7 @@
   community.general.pacman:
     name: "{{ desktop_base_packages }}"
     update_cache: yes
-  become: true
+  become: yes
 
 - name: install pip packages
   ansible.builtin.pip:

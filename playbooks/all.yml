@@ -1,6 +1,8 @@
 - hosts: all
   tasks:
-    - include_role:
+    - name: provision role
+      include_role:
         name: provision
-    - include_role:
+    - name: desktop role
+      include_role:
         name: desktop

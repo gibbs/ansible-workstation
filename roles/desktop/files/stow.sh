@@ -3,6 +3,7 @@
 # @fixme A better approach to this
 move_files=( ~/.bashrc ~/.gitconfig ~/.vimrc ~/.config/fontconfig/fonts.conf ~/.tmux.conf ~/.config/nitrogen/ )
 mkdir -p ~/tmp/dotfiles/
+touch ~/tmp/.stow-setup
 
 for filepath in "${move_files[@]}"; do
   if [[ -f "$filepath" ]]; then

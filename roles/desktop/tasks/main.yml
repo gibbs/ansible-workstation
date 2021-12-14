@@ -6,7 +6,7 @@
   when: ansible_distribution|lower == "archlinux"
 
 - name: ssh initial keygen
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: ssh-keygen -f ~/.ssh/id_rsa -q -N ''
     creates: ~/.ssh/id_rsa
 
@@ -27,6 +27,9 @@
 - name: set gtk 3.0 settings
   ansible.builtin.copy:
     dest: "~/.config/gtk-3.0/settings.ini"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0644
     content: |
       [Settings]
       gtk-application-prefer-dark-theme={{ desktop_gtk_dark }}
@@ -37,6 +40,9 @@
 - name: set gtk 4.0 settings
   ansible.builtin.copy:
     dest: "~/.config/gtk-4.0/settings.ini"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0644
     content: |
       [Settings]
       gtk-application-prefer-dark-theme={{ desktop_gtk_dark }}
@@ -49,15 +55,18 @@
     repo: https://github.com/vivien/i3blocks-contrib
     dest: ~/.config/i3blocks/contrib/
     update: no
+    version: v2.0.0
 
 - name: git clone bash_it
   ansible.builtin.git:
     repo: https://github.com/Bash-it/bash-it.git
     dest: ~/.bash_it
     depth: 1
+    version: v2.1.4
+    update: no
 
 - name: install bash_it
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: ~/.bash_it/install.sh
     creates: ~/.bashrc.bak
 
@@ -68,11 +77,12 @@
     mode: 0755
 
 - name: execute stow script
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: ~/bin/stow-setup
+    creates: ~/tmp/.stow-setup
 
 - name: vscode extensions
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: "code --install-extension {{ item }}"
     creates: "~/.vscode/extensions/{{ item }}*"
   loop: "{{ desktop_vscode_extensions }}"

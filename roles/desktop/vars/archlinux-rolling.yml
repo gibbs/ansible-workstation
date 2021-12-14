@@ -25,6 +25,7 @@ desktop_base_packages:
   - nitrogen
   - ntfs-3g
   - npm
+  - pass
   - pacman-contrib
   - polkit-gnome
   - ranger
@@ -38,6 +39,7 @@ desktop_base_packages:
   - ttf-ibm-plex
   - vagrant
   - virtualbox
+  - virtualbox-host-dkms
   - vlc
   - xorg-xprop
 
