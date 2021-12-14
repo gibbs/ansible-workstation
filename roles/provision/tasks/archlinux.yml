@@ -1,0 +1,71 @@
+- name: install provision packages
+  community.general.pacman:
+    name: "{{ provision_base_packages }}"
+    update_cache: yes
+  become: true
+
+- name: set timezone
+  ansible.builtin.shell:
+    cmd: "timedatectl set-timezone {{ provision_timezone }}"
+  become: yes
+
+- name: set locale
+  ansible.builtin.shell:
+    cmd: "localectl set-locale LANG={{ provision_locale }}"
+  become: yes
+
+- name: set keyboard
+  ansible.builtin.shell:
+    cmd: "localectl set-keymap --no-convert {{ provision_keymap }}"
+  become: yes
+
+- name: set x11 keyboard
+  ansible.builtin.shell:
+    cmd: "localectl set-x11-keymap --no-convert {{ provision_keymap_x11 }}"
+
+- name: add aur_builder user
+  ansible.builtin.user:
+    name: aur_builder
+    group: wheel
+    create_home: yes
+    home: /var/aur_builder/
+  become: true
+
+- name: add aur_builder pacman access
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/60-aur_builder
+    state: present
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    validate: 'visudo -cf %s'
+  become: true
+
+- name: install yay
+  aur:
+    name: yay
+    use: makepkg
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: install i3blocks
+  aur:
+    name: i3blocks
+    use: yay
+    state: present
+
+- name: set the gdm default session
+  ansible.builtin.copy:
+    dest: "/var/lib/AccountsService/users/{{ ansible_user_id }}"
+    content: |
+      [User]
+      Language=
+      Session=i3
+      XSession=i3
+  become: true
+
+- name: start gdm service
+  ansible.builtin.service:
+    name: gdm
+    enabled: yes
+  become: true

@@ -1,0 +1,75 @@
+- name: include os specific variables
+  include_vars: "{{ ansible_distribution|lower }}-{{ ansible_distribution_version.split('.')[0]|lower }}.yml"
+
+- name: archlinux
+  include_tasks: archlinux.yml
+  when: ansible_distribution|lower == "archlinux"
+
+- name: ssh initial keygen
+  ansible.builtin.shell:
+    cmd: ssh-keygen -f ~/.ssh/id_rsa -q -N ''
+    creates: ~/.ssh/id_rsa
+
+- name: create gtk directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0755
+    state: directory
+  loop:
+    - $HOME/.config/gtk-3.0/
+    - $HOME/.config/gtk-4.0/
+
+- name: set gtk 3.0 settings
+  ansible.builtin.copy:
+    dest: "~/.config/gtk-3.0/settings.ini"
+    content: |
+      [Settings]
+      gtk-application-prefer-dark-theme={{ desktop_gtk_dark }}
+      gtk-theme-name={{ desktop_gtk_theme }}
+      gtk-icon-theme-name={{ desktop_gtk_icon_theme }}
+      gtk-font-name={{ desktop_gtk_default_font }}
+
+- name: set gtk 4.0 settings
+  ansible.builtin.copy:
+    dest: "~/.config/gtk-4.0/settings.ini"
+    content: |
+      [Settings]
+      gtk-application-prefer-dark-theme={{ desktop_gtk_dark }}
+      gtk-theme-name={{ desktop_gtk_theme }}
+      gtk-icon-theme-name={{ desktop_gtk_icon_theme }}
+      gtk-font-name={{ desktop_gtk_default_font }}
+
+- name: clone i3blocks-contrib
+  ansible.builtin.git:
+    repo: https://github.com/vivien/i3blocks-contrib
+    dest: ~/.config/i3blocks/contrib/
+    update: no
+
+- name: git clone bash_it
+  ansible.builtin.git:
+    repo: https://github.com/Bash-it/bash-it.git
+    dest: ~/.bash_it
+    depth: 1
+
+- name: install bash_it
+  ansible.builtin.shell:
+    cmd: ~/.bash_it/install.sh
+    creates: ~/.bashrc.bak
+
+- name: copy stow bash script
+  ansible.builtin.copy:
+    src: stow.sh
+    dest: ~/bin/stow-setup
+    mode: 0755
+
+- name: execute stow script
+  ansible.builtin.shell:
+    cmd: ~/bin/stow-setup
+
+- name: vscode extensions
+  ansible.builtin.shell:
+    cmd: "code --install-extension {{ item }}"
+    creates: "~/.vscode/extensions/{{ item }}*"
+  loop: "{{ desktop_vscode_extensions }}"

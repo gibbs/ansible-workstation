@@ -1,0 +1,48 @@
+---
+- name: include os specific variables
+  include_vars: "{{ ansible_distribution|lower }}-{{ ansible_distribution_version.split('.')[0]|lower }}.yml"
+
+- name: copy user-dirs.dirs file
+  ansible.builtin.copy:
+    src: user-dirs.dirs
+    dest: /tmp/user-dirs.dirs
+    mode: 0644
+
+- name: copy xdg bash script
+  ansible.builtin.copy:
+    src: xdg.sh
+    dest: /tmp/xdg.sh
+    mode: 0755
+
+- name: execute xdg script
+  ansible.builtin.shell:
+    cmd: /tmp/xdg.sh
+    creates: /tmp/.xdg-provision
+
+- name: archlinux
+  include_tasks: archlinux.yml
+  when: ansible_distribution|lower == "archlinux"
+
+- name: create various directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0755
+    state: directory
+  loop:
+    - $HOME/.cloud
+    - $HOME/bin
+    - $HOME/tmp
+
+- name: clone dotfiles
+  ansible.builtin.git:
+    repo: "{{ provision_dotfiles_repo }}"
+    dest: $HOME/.dotfiles
+    force: yes
+    update: no
+
+- name: vim plug
+  ansible.builtin.shell:
+    cmd: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    creates: ~/.vim/autoload/plug.vim

@@ -1,0 +1,46 @@
+desktop_base_packages:
+  - arc-gtk-theme
+  - alsa-utils
+  - chromium
+  - dbeaver
+  - docker
+  - docker-compose
+  - firefox
+  - gedit
+  - gimp
+  - gnome-control-center
+  - gnome-keyring
+  - gnome-terminal
+  - gvfs
+  - htop
+  - libsecret
+  - lxappearance
+  - nautilus
+  - nitrogen
+  - npm
+  - polkit-gnome
+  - ranger
+  - rhythmbox
+  - stow
+  - terraform
+  - tmux
+  - thunderbird
+  - torbrowser-launcher
+  - ttf-font-awesome
+  - ttf-ibm-plex
+  - vagrant
+  - virtualbox
+  - vlc
+  - xorg-xprop
+
+desktop_aur_packages:
+  - qogir-icon-theme
+  - dbeaver-ee
+  - google-chrome
+  - nvm
+  - insomnia-bin
+  - rvm
+  - torguard
+  - visual-studio-code-bin
+  - powerline-fonts-git
+  - powerline-shell-git

@@ -1,0 +1,6 @@
+*~
+*.cache
+*.log
+/vendor_roles/
+/.vagrant/
+/get-pip.py

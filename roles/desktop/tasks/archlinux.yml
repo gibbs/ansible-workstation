@@ -1,0 +1,18 @@
+- name: install desktop base packages
+  community.general.pacman:
+    name: "{{ desktop_base_packages }}"
+    update_cache: yes
+  become: true
+
+- name: install pip packages
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ desktop_pip_packages }}"
+
+- name: install desktop aur packages
+  aur:
+    name: "{{ item }}"
+    use: yay
+    state: present
+  loop: "{{ desktop_aur_packages }}"

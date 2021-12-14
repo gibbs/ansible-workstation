@@ -1,0 +1,29 @@
+desktop_gtk_theme: Arc-Dark
+desktop_gtk_icon_theme: Qogir
+desktop_gtk_dark: "true"
+desktop_gtk_document_font: "IBM Plex Sans 11"
+desktop_gtk_default_font: "IBM Plex Sans 11"
+desktop_gtk_monospace_font: "Iosevka 14"
+
+desktop_pip_packages:
+  - fontawesome
+  - fontawesome47
+  - gobject
+  - i3ipc
+
+desktop_vscode_extensions:
+  - iocave.monkey-patch
+  - iocave.customize-ui
+  - chenxsan.vscode-standardjs
+  - compulim.vscode-clock
+  - dbaeumer.vscode-eslint
+  - editorconfig.editorconfig
+  - golang.go
+  - hashicorp.terraform
+  - vscodevim.vim
+  - qinjia.seti-icons
+  - joelcrosby.one-dark-darker
+  - mrmlnc.vscode-duplicate
+  - puppet.puppet-vscode
+  - neilbrayfield.php-docblocker
+

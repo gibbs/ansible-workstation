@@ -1,0 +1,5 @@
+provision_locale: en_GB
+provision_timezone: Europe/London
+provision_keymap: uk
+provision_keymap_x11: gb
+provision_dotfiles_repo: https://github.com/gibbs/dotfiles
