@@ -22,6 +22,7 @@ desktop_base_packages:
   - lxappearance
   - nautilus
   - neovim
+  - nextcloud
   - nitrogen
   - ntfs-3g
   - npm
@@ -45,6 +46,7 @@ desktop_base_packages:
 
 desktop_aur_packages:
   - dbeaver-ee
+  - dropbox
   - google-chrome
   - nvm
   - insomnia-bin

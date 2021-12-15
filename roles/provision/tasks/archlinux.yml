@@ -75,6 +75,7 @@
     owner: root
     group: root
     mode: 0600
+    force: no
     content: |
       [User]
       Language=

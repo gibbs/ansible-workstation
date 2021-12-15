@@ -22,7 +22,21 @@
     - $HOME/.config/gtk-4.0/
     - $HOME/.config/nitrogen/
     - $HOME/.config/nitrogen/wallpapers/
+    - $HOME/.config/VirtualBox
     - $HOME/.wallpapers/
+    - $HOME/.cloud/nextcloud/
+    - $HOME/.cloud/dropbox/
+    - $HOME/.dropbox/
+    - $HOME/virtualbox
+
+- name: create dropbox symlink
+  ansible.builtin.file:
+    src: $HOME/.cloud/dropbox/Dropbox
+    dest: $HOME/dropbox
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0755
+    state: link
 
 - name: set gtk 3.0 settings
   ansible.builtin.copy:
@@ -30,6 +44,7 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0644
+    force: no
     content: |
       [Settings]
       gtk-application-prefer-dark-theme={{ desktop_gtk_dark }}
@@ -43,6 +58,7 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0644
+    force: no
     content: |
       [Settings]
       gtk-application-prefer-dark-theme={{ desktop_gtk_dark }}
@@ -56,6 +72,15 @@
     dest: ~/.config/i3blocks/contrib/
     update: no
     version: v2.0.0
+
+- name: virtualbox initial config
+  ansible.builtin.template:
+    dest: $HOME/.config/VirtualBox/VirtualBox.xml
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0600
+    src: virtualbox.xml.j2
+    force: no
 
 - name: git clone bash_it
   ansible.builtin.git:
