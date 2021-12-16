@@ -8,18 +8,22 @@ desktop_base_packages:
   - dbeaver
   - docker
   - docker-compose
+  - eog
   - firefox
   - filezilla
+  - ffmpeg
   - gedit
   - gimp
   - gnome-control-center
   - gnome-keyring
+  - gnome-screenshot
   - gnome-terminal
   - gparted
   - gvfs
   - htop
   - libsecret
   - lxappearance
+  - man
   - nautilus
   - neovim
   - nextcloud
@@ -29,6 +33,7 @@ desktop_base_packages:
   - pass
   - pacman-contrib
   - polkit-gnome
+  - procps-ng
   - ranger
   - rhythmbox
   - stow
@@ -42,9 +47,11 @@ desktop_base_packages:
   - virtualbox
   - virtualbox-host-dkms
   - vlc
+  - xorg-xev
   - xorg-xprop
 
 desktop_aur_packages:
+  - clipster
   - dbeaver-ee
   - dropbox
   - google-chrome
@@ -52,6 +59,7 @@ desktop_aur_packages:
   - insomnia-bin
   - powerline-fonts-git
   - powerline-shell-git
+  - puppet-bolt
   - qogir-icon-theme
   - rvm
   - torguard

@@ -2,8 +2,10 @@
 
 ![Ansible Lint](https://github.com/gibbs/ansible-workstation/actions/workflows/test.yml/badge.svg)
 
-Ansible and bash scripts for bootstrapping/provisioning my personal desktop
-environment.
+Ansible provisioning and management of my very boring, but highly functional,
+Arch setup.
+
+![Desktop](screenshot-2021-12-16_21-08-26.png?raw=true)
 
 ## Prerequisites
 
