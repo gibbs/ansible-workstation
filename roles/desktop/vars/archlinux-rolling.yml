@@ -8,10 +8,13 @@ desktop_base_packages:
   - dbeaver
   - docker
   - docker-compose
+  - dpkg
   - eog
+  - fakeroot
   - firefox
   - filezilla
   - ffmpeg
+  - file-roller
   - gedit
   - gimp
   - gnome-control-center
@@ -36,6 +39,7 @@ desktop_base_packages:
   - procps-ng
   - ranger
   - rhythmbox
+  - rpm-tools
   - stow
   - terraform
   - tmux
