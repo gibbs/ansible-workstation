@@ -5,10 +5,12 @@ desktop_base_packages:
   - chromium
   - conky
   - compton
+  - deluge-gtk
   - dbeaver
   - docker
   - docker-compose
   - dpkg
+  - dunst
   - eog
   - fakeroot
   - firefox
@@ -30,6 +32,8 @@ desktop_base_packages:
   - nautilus
   - neovim
   - nextcloud
+  - networkmanager
+  - network-manager-applet
   - nitrogen
   - ntfs-3g
   - npm
@@ -51,6 +55,7 @@ desktop_base_packages:
   - virtualbox
   - virtualbox-host-dkms
   - vlc
+  - xorg-xdpyinfo
   - xorg-xev
   - xorg-xprop
 
@@ -60,6 +65,7 @@ desktop_aur_packages:
   - dropbox
   - google-chrome
   - nvm
+  - i3lock-fancy-dualmonitors-git
   - insomnia-bin
   - powerline-fonts-git
   - powerline-shell-git
