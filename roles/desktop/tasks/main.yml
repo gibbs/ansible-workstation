@@ -5,6 +5,16 @@
   include_tasks: archlinux.yml
   when: ansible_distribution|lower == "archlinux"
 
+- name: ubuntu
+  include_tasks: ubuntu.yml
+  when: ansible_distribution|lower == "ubuntu"
+
+- name: install pip packages
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ desktop_pip_packages }}"
+
 - name: ssh initial keygen
   ansible.builtin.command:
     cmd: ssh-keygen -f ~/.ssh/id_rsa -q -N ''

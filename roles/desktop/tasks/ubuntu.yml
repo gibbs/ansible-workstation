@@ -1,0 +1,43 @@
+- name: install deb files from URLs
+  ansible.builtin.apt:
+    deb: "{{ item }}"
+  loop: "{{ desktop_deb_urls }}"
+  become: yes
+
+- name: install desktop base packages
+  ansible.builtin.apt:
+    name: "{{ desktop_base_packages }}"
+    update_cache: yes
+  become: yes
+
+- name: add apt keys from url
+  ansible.builtin.apt_key:
+    url: "{{ item }}"
+  loop: "{{ desktop_apt_key_urls }}"
+  become: yes
+
+- name: add apt keys from fingerprint id
+  ansible.builtin.apt_key:
+    keyserver: pgp.mit.edu
+    id: "{{ item }}"
+  loop: "{{ desktop_apt_key_ids }}"
+  become: yes
+
+- name: add ppa repositories
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+    state: present
+  loop: "{{ desktop_ppa_repositories }}"
+  become: yes
+
+- name: install ppa packages
+  ansible.builtin.apt:
+    name: "{{ desktop_ppa_packages }}"
+    update_cache: yes
+  become: yes
+
+- name: install qogir icon theme
+  ansible.builtin.unarchive:
+    src: https://dl2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTY0MTk3NDI4NywidSI6bnVsbCwibHQiOiJkb3dubG9hZCIsInMiOiI5YmMwZmNlNTRkMDA5YTA0OTg2MTEyZDY2MmNiZWQ4NjgzYWQ5OGJmOGM5ODMyOWM4NGM1MGI0NGIyMTEwMTgwZDhiOTMzMzA5MGRlZTUyNGJlMDRlNGZkODM2ZTZjODMyMDBlOTZmZTMwOTY3NWIxZTZmOTYyZWUzYjAwYzk5MSIsInQiOjE2NDIzNzY1ODEsInN0ZnAiOiJhOTlkMTc0YTdjZjUxZmM5OTYzMTAwMWIyZjU2MTZlMyIsInN0aXAiOiIyYTAyOmM3ZjoyYzYwOjdmMDA6MjEyNDo4ZjA0OmVmZmU6YjRiNiJ9.P4zbttYya52odCnE-3fIpCrzZZVsa2pySSLOK3iyUGs/01-Qogir.tar.xz
+    dest: $HOME/.icons/
+    remote_src: yes

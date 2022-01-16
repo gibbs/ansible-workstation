@@ -4,12 +4,6 @@
     update_cache: yes
   become: yes
 
-- name: install pip packages
-  ansible.builtin.pip:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ desktop_pip_packages }}"
-
 - name: install desktop aur packages
   aur:
     name: "{{ item }}"

@@ -1,0 +1,102 @@
+desktop_base_packages:
+  - arc-theme
+  - alsa-utils
+  - awesome-terminal-fonts
+  - baobab
+  - chromium-browser
+  - conky
+  - compton
+  - deluge-gtk
+  - docker
+  - docker-compose
+  - dpkg
+  - dnsutils
+  - dunst
+  - eog
+  - fakeroot
+  - firefox
+  - ffmpeg
+  - file-roller
+  - gedit
+  - gimp
+  - gnome-calculator
+  - gnome-control-center
+  - gnome-keyring
+  - gnome-screenshot
+  - gnome-terminal
+  - gparted
+  - gvfs
+  - htop
+  - i3lock-fancy
+  - libsecret-1-0
+  - libreoffice
+  - lxappearance
+  - man-db
+  - nautilus
+  - neovim
+  - nautilus-nextcloud
+  - nextcloud-desktop
+  - network-manager
+  - network-manager-gnome
+  - network-manager-openvpn-gnome
+  - network-manager-pptp-gnome
+  - nitrogen
+  - ntfs-3g
+  - npm
+  - pass
+  - policykit-1-gnome
+  - procps
+  - python3-gpg
+  - powerline
+  - ranger
+  - rhythmbox
+  - stow
+  - snapd
+  - software-properties-common
+  - tmux
+  - thunderbird
+  - torbrowser-launcher
+  - fonts-font-awesome
+  - fonts-ibm-plex
+  - fonts-powerline
+  - vagrant
+  - virtualbox
+  - virtualbox-dkms
+  - vlc
+  - whois
+  - wireguard
+  - x11-utils
+
+desktop_ppa_repositories:
+  - ppa:serge-rider/dbeaver-ce
+  - ppa:serge-rider/dbeaver-ee
+  - deb [arch=amd64] https://linux.dropbox.com/ubuntu disco main
+  - deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
+  - deb [trusted=yes arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all
+  - deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+  - ppa:rael-gc/rvm
+  - deb [arch=amd64] https://apt.releases.hashicorp.com focal main
+  - ppa:regolith-linux/unstable
+
+desktop_apt_key_urls:
+  - https://dl.google.com/linux/linux_signing_key.pub
+  - https://packages.microsoft.com/keys/microsoft.asc
+  - https://apt.releases.hashicorp.com/gpg
+
+desktop_apt_key_ids:
+  - 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+
+desktop_deb_urls:
+  - https://torguard.net/downloads/new/torguard-latest-amd64.deb
+  - https://apt.puppet.com/puppet-tools-release-focal.deb
+
+desktop_ppa_packages:
+  - dbeaver-ce
+  - dropbox
+  - google-chrome-stable
+  - insomnia
+  - i3-gaps
+  - code
+  - rvm
+  - terraform
+  - torguard

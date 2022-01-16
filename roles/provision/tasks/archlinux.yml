@@ -4,39 +4,6 @@
     update_cache: yes
   become: yes
 
-- name: set timezone
-  community.general.timezone:
-    name: "{{ provision_timezone }}"
-  become: yes
-
-- name: get current locale and language configuration
-  command: localectl status
-  register: locale_status
-  changed_when: false
-
-- name: parse lanf from current locale and language configuration
-  set_fact:
-    locale_lang: "{{ locale_status.stdout | regex_search('LANG=([^\n]+)', '\\1') | first }}"
-    locale_keymap: "{{ locale_status.stdout | regex_search('VC Keymap: ([^\n]+)', '\\1') | first }}"
-    locale_layout: "{{ locale_status.stdout | regex_search('X11 Layout: ([^\n]+)', '\\1') | first }}"
-
-- name: set locale
-  ansible.builtin.command:
-    cmd: "localectl set-locale LANG={{ provision_locale }}"
-  changed_when: locale_lang != provision_locale
-  become: yes
-
-- name: set keyboard
-  ansible.builtin.command:
-    cmd: "localectl set-keymap --no-convert {{ provision_keymap }}"
-  changed_when: locale_keymap != provision_keymap
-  become: yes
-
-- name: set x11 keyboard
-  ansible.builtin.command:
-    cmd: "localectl set-x11-keymap --no-convert {{ provision_keymap_x11 }}"
-  changed_when: locale_layout != provision_keymap_x11
-
 - name: add aur_builder user
   ansible.builtin.user:
     name: aur_builder
@@ -68,23 +35,3 @@
     name: i3blocks
     use: yay
     state: present
-
-- name: set the gdm default session
-  ansible.builtin.copy:
-    dest: "/var/lib/AccountsService/users/{{ ansible_user_id }}"
-    owner: root
-    group: root
-    mode: 0600
-    force: no
-    content: |
-      [User]
-      Language=
-      Session=i3
-      XSession=i3
-  become: yes
-
-- name: start gdm service
-  ansible.builtin.service:
-    name: gdm
-    enabled: yes
-  become: yes

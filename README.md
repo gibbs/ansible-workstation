@@ -3,19 +3,25 @@
 ![Ansible Lint](https://github.com/gibbs/ansible-workstation/actions/workflows/test.yml/badge.svg)
 
 Ansible provisioning and management of my very boring, but highly functional,
-Arch setup.
+i3 and GNOME setup.
 
 ![Desktop](screenshot-2021-12-16_21-08-26.png?raw=true)
 
 ## Prerequisites
 
-Install [Arch Linux](https://archlinux.org/) with networking configured.
+Install [Arch Linux](https://archlinux.org/) or
+[Ubuntu Focal LTS](https://ubuntu.com/download/server) with networking
+configured.
 
 ## Install Ansible
 
 Install Ansible:
 
 ```bash
+# In Ubuntu provide a python path
+apt install python-is-python3
+
+# Install pip and ansible
 curl -O https://bootstrap.pypa.io/get-pip.py
 python get-pip.py
 echo 'export PATH=$PATH:~/.local/bin' >> ~/.bashrc
