@@ -23,6 +23,7 @@ desktop_base_packages:
   - gnome-calculator
   - gnome-control-center
   - gnome-keyring
+  - gnome-nettool
   - gnome-screenshot
   - gnome-terminal
   - gnupg

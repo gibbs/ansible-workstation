@@ -1,7 +1,6 @@
 desktop_base_packages:
   - arc-theme
   - alsa-utils
-  - awesome-terminal-fonts
   - baobab
   - chromium-browser
   - conky
@@ -22,6 +21,7 @@ desktop_base_packages:
   - gnome-calculator
   - gnome-control-center
   - gnome-keyring
+  - gnome-nettool
   - gnome-screenshot
   - gnome-terminal
   - gparted
