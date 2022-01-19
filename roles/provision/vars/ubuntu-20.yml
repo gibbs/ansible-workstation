@@ -1,0 +1,10 @@
+provision_base_packages:
+  - build-essential
+  - bash
+  - gdm3
+  - git
+  - i3blocks
+  - i3status
+  - rofi
+  - vim
+  - wget

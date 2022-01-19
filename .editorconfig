@@ -11,7 +11,10 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
 
-[*.{json,sh,yml},Vagrantfile]
+[*.{json,sh,yml}]
+indent_size = 2
+
+[Vagrantfile]
 indent_size = 2
 
 # Jinja2 template files

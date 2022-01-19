@@ -10,6 +10,7 @@ desktop_base_packages:
   - docker
   - docker-compose
   - dpkg
+  - dnsutils
   - dunst
   - eog
   - fakeroot
@@ -19,14 +20,18 @@ desktop_base_packages:
   - file-roller
   - gedit
   - gimp
+  - gnome-calculator
   - gnome-control-center
   - gnome-keyring
+  - gnome-nettool
   - gnome-screenshot
   - gnome-terminal
+  - gnupg
   - gparted
   - gvfs
   - htop
   - libsecret
+  - libreoffice-fresh
   - lxappearance
   - man
   - nautilus
@@ -55,6 +60,8 @@ desktop_base_packages:
   - virtualbox
   - virtualbox-host-dkms
   - vlc
+  - whois
+  - wireguard-tools
   - xorg-xdpyinfo
   - xorg-xev
   - xorg-xprop

@@ -1,0 +1,5 @@
+- name: install provision packages
+  ansible.builtin.apt:
+    name: "{{ provision_base_packages }}"
+    update_cache: yes
+  become: yes

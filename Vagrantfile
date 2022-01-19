@@ -5,6 +5,10 @@ Vagrant.configure("2") do |config|
     arch.vm.box = "archlinux/archlinux"
   end
 
+  config.vm.define "ubuntu" do |arch|
+    arch.vm.box = "ubuntu/focal64"
+  end
+
   config.vm.synced_folder "./", "/home/vagrant/ansible-workstation",
     mount_options: ["dmode=755,fmode=644"]
 
