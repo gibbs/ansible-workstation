@@ -41,6 +41,7 @@ desktop_base_packages:
   - network-manager-applet
   - nitrogen
   - ntfs-3g
+  - nmap
   - npm
   - pass
   - pacman-contrib

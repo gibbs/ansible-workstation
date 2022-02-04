@@ -42,6 +42,7 @@ desktop_base_packages:
   - network-manager-pptp-gnome
   - nitrogen
   - ntfs-3g
+  - nmap
   - npm
   - pass
   - policykit-1-gnome
