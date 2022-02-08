@@ -36,6 +36,7 @@ desktop_base_packages:
   - man
   - nautilus
   - neovim
+  - openbsd-netcat
   - nextcloud
   - networkmanager
   - network-manager-applet

@@ -35,6 +35,7 @@ desktop_base_packages:
   - nautilus
   - neovim
   - nautilus-nextcloud
+  - netcat-openbsd
   - nextcloud-desktop
   - network-manager
   - network-manager-gnome
