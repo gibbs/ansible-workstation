@@ -13,6 +13,7 @@ desktop_base_packages:
   - dnsutils
   - dunst
   - eog
+  - evince
   - fakeroot
   - firefox
   - filezilla
@@ -30,6 +31,7 @@ desktop_base_packages:
   - gparted
   - gvfs
   - htop
+  - jq
   - libsecret
   - libreoffice-fresh
   - lxappearance

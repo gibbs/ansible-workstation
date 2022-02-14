@@ -12,6 +12,7 @@ desktop_base_packages:
   - dnsutils
   - dunst
   - eog
+  - evince
   - fakeroot
   - firefox
   - ffmpeg
@@ -28,6 +29,7 @@ desktop_base_packages:
   - gvfs
   - htop
   - i3lock-fancy
+  - jq
   - libsecret-1-0
   - libreoffice
   - lxappearance
