@@ -36,6 +36,7 @@ desktop_base_packages:
   - libreoffice-fresh
   - lxappearance
   - man
+  - meld
   - nautilus
   - neovim
   - openbsd-netcat
@@ -82,6 +83,8 @@ desktop_aur_packages:
   - powerline-shell-git
   - puppet-bolt
   - qogir-icon-theme
+  - qgnomeplatform
   - rvm
   - torguard
   - visual-studio-code-bin
+  - zeal

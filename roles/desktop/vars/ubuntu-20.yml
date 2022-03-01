@@ -34,6 +34,7 @@ desktop_base_packages:
   - libreoffice
   - lxappearance
   - man-db
+  - meld
   - nautilus
   - neovim
   - nautilus-nextcloud
@@ -70,6 +71,7 @@ desktop_base_packages:
   - whois
   - wireguard
   - x11-utils
+  - zeal
 
 desktop_ppa_repositories:
   - ppa:serge-rider/dbeaver-ce
