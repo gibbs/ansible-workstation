@@ -55,6 +55,7 @@ desktop_base_packages:
   - powerline
   - ranger
   - rhythmbox
+  - seahorse
   - stow
   - snapd
   - software-properties-common

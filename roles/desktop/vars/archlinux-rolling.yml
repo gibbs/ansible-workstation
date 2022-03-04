@@ -54,6 +54,7 @@ desktop_base_packages:
   - ranger
   - rhythmbox
   - rpm-tools
+  - seahorse
   - stow
   - terraform
   - tmux
