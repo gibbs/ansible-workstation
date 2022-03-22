@@ -1,12 +1,12 @@
 - name: include os specific variables
-  include_vars: "{{ ansible_distribution|lower }}-{{ ansible_distribution_version.split('.')[0]|lower }}.yml"
+  ansible.builtin.include_vars: "{{ ansible_distribution|lower }}-{{ ansible_distribution_version.split('.')[0]|lower }}.yml"
 
 - name: archlinux
-  include_tasks: archlinux.yml
+  ansible.builtin.include_tasks: archlinux.yml
   when: ansible_distribution|lower == "archlinux"
 
 - name: ubuntu
-  include_tasks: ubuntu.yml
+  ansible.builtin.include_tasks: ubuntu.yml
   when: ansible_distribution|lower == "ubuntu"
 
 - name: install pip packages
@@ -55,7 +55,7 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0644
-    force: no
+    force: false
     content: |
       [Settings]
       gtk-application-prefer-dark-theme={{ desktop_gtk_dark }}
@@ -69,7 +69,7 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0644
-    force: no
+    force: false
     content: |
       [Settings]
       gtk-application-prefer-dark-theme={{ desktop_gtk_dark }}
@@ -81,7 +81,7 @@
   ansible.builtin.git:
     repo: https://github.com/vivien/i3blocks-contrib
     dest: ~/.config/i3blocks/contrib/
-    update: no
+    update: false
     version: v2.0.0
 
 - name: virtualbox initial config
@@ -91,7 +91,7 @@
     group: "{{ ansible_user_id }}"
     mode: 0600
     src: virtualbox.xml.j2
-    force: no
+    force: false
 
 - name: git clone bash_it
   ansible.builtin.git:
@@ -99,7 +99,7 @@
     dest: ~/.bash_it
     depth: 1
     version: v2.1.4
-    update: no
+    update: false
 
 - name: install bash_it
   ansible.builtin.command:

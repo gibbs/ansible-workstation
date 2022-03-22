@@ -4,3 +4,4 @@ exclude_paths:
 
 skip_list:
   - metadata
+  - line-length
