@@ -20,13 +20,16 @@ desktop_base_packages:
   - gedit
   - gimp
   - gnome-calculator
+  - gnome-calendar
   - gnome-control-center
   - gnome-keyring
   - gnome-nettool
+  - gnome-online-accounts
   - gnome-screenshot
   - gnome-terminal
   - gparted
   - gvfs
+  - gvfs-backends
   - htop
   - i3lock-fancy
   - jq

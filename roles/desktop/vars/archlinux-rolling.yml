@@ -22,14 +22,20 @@ desktop_base_packages:
   - gedit
   - gimp
   - gnome-calculator
+  - gnome-calendar
   - gnome-control-center
   - gnome-keyring
   - gnome-nettool
+  - gnome-online-accounts
   - gnome-screenshot
   - gnome-terminal
   - gnupg
   - gparted
   - gvfs
+  - gvfs-goa
+  - gvfs-google
+  - gvfs-mtp
+  - gvfs-nfs
   - htop
   - jq
   - libsecret
