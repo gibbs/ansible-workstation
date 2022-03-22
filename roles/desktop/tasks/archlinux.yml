@@ -1,8 +1,8 @@
 - name: install desktop base packages
   community.general.pacman:
     name: "{{ desktop_base_packages }}"
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 
 - name: install desktop aur packages
   aur:

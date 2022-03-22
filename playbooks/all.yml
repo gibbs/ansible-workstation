@@ -1,8 +1,8 @@
 - hosts: all
   tasks:
     - name: provision role
-      include_role:
+      ansible.builtin.include_role:
         name: provision
     - name: desktop role
-      include_role:
+      ansible.builtin.include_role:
         name: desktop

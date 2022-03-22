@@ -1,33 +1,33 @@
 - name: install provision packages
   community.general.pacman:
     name: "{{ provision_base_packages }}"
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 
 - name: add aur_builder user
   ansible.builtin.user:
     name: aur_builder
     group: wheel
-    create_home: yes
+    create_home: true
     home: /var/aur_builder/
-  become: yes
+  become: true
 
 - name: add aur_builder pacman access
   ansible.builtin.lineinfile:
     path: /etc/sudoers.d/60-aur_builder
     state: present
     line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
-    create: yes
+    create: true
     mode: 0600
     validate: 'visudo -cf %s'
-  become: yes
+  become: true
 
 - name: install yay
   aur:
     name: yay
     use: makepkg
     state: present
-  become: yes
+  become: true
   become_user: aur_builder
 
 - name: install i3blocks
