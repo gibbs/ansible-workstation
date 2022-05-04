@@ -10,10 +10,18 @@ i3 and GNOME setup.
 ## Prerequisites
 
 Install [Arch Linux](https://archlinux.org/) or
-[Ubuntu Focal LTS](https://ubuntu.com/download/server) with networking
+[Ubuntu Jammy LTS](https://ubuntu.com/download/server) with networking
 configured.
 
-## Install Ansible
+## Quick Start
+
+```bash
+git clone https://github.com/gibbs/ansible-workstation.git && cd ansible-workstation
+./scripts/install.sh
+./scripts/playbook.sh
+```
+
+## Manual
 
 Install Ansible:
 
@@ -34,7 +42,7 @@ and run:
 
 ```bash
 cd ~/
-git clone https://github.com/gibbs/ansible-desktop.git && cd ansible-desktop
+git clone https://github.com/gibbs/ansible-workstation.git && cd ansible-workstation
 ansible-galaxy install -r requirements.yml
 ```
 

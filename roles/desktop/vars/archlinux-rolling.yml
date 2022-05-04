@@ -37,10 +37,13 @@ desktop_base_packages:
   - gvfs-mtp
   - gvfs-nfs
   - htop
+  - hunspell
+  - hunspell-en_gb
   - jq
   - libsecret
   - libreoffice-fresh
   - lxappearance
+  - lshw
   - man
   - meld
   - nautilus

@@ -31,11 +31,14 @@ desktop_base_packages:
   - gvfs
   - gvfs-backends
   - htop
+  - hunspell
+  - hunspell-en-gb
   - i3lock-fancy
   - jq
   - libsecret-1-0
   - libreoffice
   - lxappearance
+  - lshw
   - man-db
   - meld
   - nautilus
@@ -79,14 +82,12 @@ desktop_base_packages:
 
 desktop_ppa_repositories:
   - ppa:serge-rider/dbeaver-ce
-  - ppa:serge-rider/dbeaver-ee
   - deb [arch=amd64] https://linux.dropbox.com/ubuntu disco main
   - deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
   - deb [trusted=yes arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all
   - deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
   - ppa:rael-gc/rvm
-  - deb [arch=amd64] https://apt.releases.hashicorp.com focal main
-  - ppa:regolith-linux/unstable
+  - deb [arch=amd64] https://apt.releases.hashicorp.com jammy main
 
 desktop_apt_key_urls:
   - https://dl.google.com/linux/linux_signing_key.pub
@@ -105,7 +106,6 @@ desktop_ppa_packages:
   - dropbox
   - google-chrome-stable
   - insomnia
-  - i3-gaps
   - code
   - rvm
   - terraform
