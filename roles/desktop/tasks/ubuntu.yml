@@ -46,4 +46,5 @@
   ansible.builtin.command: ./install.sh
   args:
     chdir: /tmp/Qogir-theme-2022-04-29
+    creates: /usr/share/themes/Qogir
   become: true

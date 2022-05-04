@@ -37,7 +37,7 @@
   register: locale_status
   changed_when: false
 
-- name: parse lanf from current locale and language configuration
+- name: parse lang from current locale and language configuration
   ansible.builtin.set_fact:
     locale_lang: "{{ locale_status.stdout | regex_search('LANG=([^\n]+)', '\\1') | first }}"
     locale_keymap: "{{ locale_status.stdout | regex_search('VC Keymap: ([^\n]+)', '\\1') | first }}"
@@ -47,12 +47,6 @@
   ansible.builtin.command:
     cmd: "localectl set-locale LANG={{ provision_locale }}.UTF-8"
   changed_when: locale_lang != provision_locale
-  become: true
-
-- name: set x11 keyboard
-  ansible.builtin.command:
-    cmd: "localectl set-x11-keymap --no-convert {{ provision_keymap_x11 }}"
-  changed_when: locale_layout != provision_keymap_x11
   become: true
 
 - name: set the gdm default session
