@@ -36,8 +36,14 @@
     update_cache: true
   become: true
 
-- name: install qogir icon theme
+- name: download qogir icon theme archive
   ansible.builtin.unarchive:
-    src: https://dl2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTY0MTk3NDI4NywidSI6bnVsbCwibHQiOiJkb3dubG9hZCIsInMiOiI5YmMwZmNlNTRkMDA5YTA0OTg2MTEyZDY2MmNiZWQ4NjgzYWQ5OGJmOGM5ODMyOWM4NGM1MGI0NGIyMTEwMTgwZDhiOTMzMzA5MGRlZTUyNGJlMDRlNGZkODM2ZTZjODMyMDBlOTZmZTMwOTY3NWIxZTZmOTYyZWUzYjAwYzk5MSIsInQiOjE2NDIzNzY1ODEsInN0ZnAiOiJhOTlkMTc0YTdjZjUxZmM5OTYzMTAwMWIyZjU2MTZlMyIsInN0aXAiOiIyYTAyOmM3ZjoyYzYwOjdmMDA6MjEyNDo4ZjA0OmVmZmU6YjRiNiJ9.P4zbttYya52odCnE-3fIpCrzZZVsa2pySSLOK3iyUGs/01-Qogir.tar.xz
-    dest: $HOME/.icons/
+    src: https://github.com/vinceliuice/Qogir-theme/archive/refs/tags/2022-04-29.zip
+    dest: /tmp/
     remote_src: true
+
+- name: run qogir installation script
+  ansible.builtin.command: ./install.sh
+  args:
+    chdir: /tmp/Qogir-theme-2022-04-29
+  become: true

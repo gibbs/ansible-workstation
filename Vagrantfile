@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "ubuntu" do |arch|
-    arch.vm.box = "ubuntu/focal64"
+    arch.vm.box = "ubuntu/jammy64"
   end
 
   config.vm.synced_folder "./", "/home/vagrant/ansible-workstation",

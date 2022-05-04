@@ -45,14 +45,8 @@
 
 - name: set locale
   ansible.builtin.command:
-    cmd: "localectl set-locale LANG={{ provision_locale }}"
+    cmd: "localectl set-locale LANG={{ provision_locale }}.UTF-8"
   changed_when: locale_lang != provision_locale
-  become: true
-
-- name: set keyboard
-  ansible.builtin.command:
-    cmd: "localectl set-keymap --no-convert {{ provision_keymap }}"
-  changed_when: locale_keymap != provision_keymap
   become: true
 
 - name: set x11 keyboard
