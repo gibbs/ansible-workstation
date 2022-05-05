@@ -36,6 +36,7 @@ desktop_base_packages:
   - i3lock-fancy
   - jq
   - libsecret-1-0
+  - libcrypt-dev
   - libreoffice
   - lxappearance
   - lshw

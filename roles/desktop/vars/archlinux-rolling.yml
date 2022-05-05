@@ -41,6 +41,7 @@ desktop_base_packages:
   - hunspell-en_gb
   - jq
   - libsecret
+  - libxcrypt-compat
   - libreoffice-fresh
   - lxappearance
   - lshw
