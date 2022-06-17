@@ -13,6 +13,10 @@ desktop_base_packages:
   - dunst
   - eog
   - evince
+  - evolution
+  - evolution-plugin-bogofilter
+  - evolution-plugins
+  - evolution-rss
   - fakeroot
   - firefox
   - ffmpeg
@@ -63,9 +67,10 @@ desktop_base_packages:
   - ranger
   - rhythmbox
   - seahorse
-  - stow
+  - smartmontools
   - snapd
   - software-properties-common
+  - stow
   - tmux
   - thunderbird
   - torbrowser-launcher
