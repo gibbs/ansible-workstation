@@ -5,7 +5,7 @@
 Ansible provisioning and management of my very boring, but highly functional,
 i3 and GNOME setup.
 
-![Desktop](screenshot-2021-12-16_21-08-26.png?raw=true)
+![Desktop](screenshot-2022-08-08_15-44-15.png?raw=true)
 
 ## Prerequisites
 

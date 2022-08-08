@@ -19,6 +19,7 @@ desktop_base_packages:
   - evolution-on
   - fakeroot
   - firefox
+  - firefox-developer-edition
   - filezilla
   - ffmpeg
   - file-roller
@@ -27,6 +28,7 @@ desktop_base_packages:
   - gnome-calculator
   - gnome-calendar
   - gnome-control-center
+  - gnome-font-viewer
   - gnome-keyring
   - gnome-nettool
   - gnome-online-accounts
