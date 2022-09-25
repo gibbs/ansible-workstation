@@ -2,6 +2,7 @@ desktop_base_packages:
   - arc-gtk-theme
   - alsa-utils
   - baobab
+  - bc
   - chromium
   - conky
   - compton
@@ -55,8 +56,13 @@ desktop_base_packages:
   - nautilus
   - neovim
   - openbsd-netcat
+  - openconnect
   - nextcloud
   - networkmanager
+  - networkmanager-openconnect
+  - networkmanager-openvpn
+  - networkmanager-pptp
+  - networkmanager-vpnc
   - network-manager-applet
   - nitrogen
   - ntfs-3g
@@ -103,6 +109,7 @@ desktop_aur_packages:
   - qogir-icon-theme
   - qgnomeplatform
   - rvm
+  - slack-desktop
   - torguard
   - visual-studio-code-bin
   - zeal

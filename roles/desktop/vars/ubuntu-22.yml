@@ -2,6 +2,7 @@ desktop_base_packages:
   - arc-theme
   - alsa-utils
   - baobab
+  - bc
   - chromium-browser
   - conky
   - compton
@@ -56,10 +57,12 @@ desktop_base_packages:
   - network-manager-gnome
   - network-manager-openvpn-gnome
   - network-manager-pptp-gnome
+  - network-manager-openconnect
   - nitrogen
   - ntfs-3g
   - nmap
   - npm
+  - openconnect
   - pass
   - policykit-1-gnome
   - procps
