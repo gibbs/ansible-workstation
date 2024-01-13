@@ -1,15 +1,17 @@
 desktop_base_packages:
+  - acpi
   - arc-gtk-theme
   - alsa-utils
   - baobab
   - bc
+  - bitwarden
   - chromium
   - conky
-  - compton
   - deluge-gtk
   - dbeaver
   - docker
   - docker-compose
+  - dosfstools
   - dpkg
   - dnsutils
   - dunst
@@ -21,7 +23,6 @@ desktop_base_packages:
   - fakeroot
   - firefox
   - firefox-developer-edition
-  - filezilla
   - ffmpeg
   - file-roller
   - gedit
@@ -93,23 +94,24 @@ desktop_base_packages:
   - xorg-xdpyinfo
   - xorg-xev
   - xorg-xprop
+  - xorg-xrandr
 
 desktop_aur_packages:
+  - bruno
   - clipster
   - dbeaver-ee
-  - dropbox
   - dive
   - google-chrome
+  - gnome-terminal-transparency
+  - mkinitcpio-firmware
   - nvm
   - i3lock-fancy-dualmonitors-git
-  - insomnia-bin
   - powerline-fonts-git
   - powerline-shell-git
   - puppet-bolt
   - qogir-icon-theme
   - qgnomeplatform
   - rvm
-  - slack-desktop
   - torguard
   - visual-studio-code-bin
   - zeal
