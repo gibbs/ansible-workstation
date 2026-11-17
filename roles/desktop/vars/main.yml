@@ -1,3 +1,4 @@
+---
 desktop_gtk_theme: Arc-Dark
 desktop_gtk_icon_theme: Qogir
 desktop_gtk_dark: "true"
@@ -39,5 +40,16 @@ desktop_vscode_extensions:
   - vscodevim.vim
   - wwm.better-align
 
-# Deploy a sway config and Wayland environment (set per-OS, e.g. Asahi)
-desktop_wayland: false
+desktop_stow_packages:
+  - bash
+  - bin
+  - conky
+  - dunst
+  - git
+  - i3
+  - nitrogen
+  - ranger
+  - tmux
+  - vim
+  - vscode
+  - xdg

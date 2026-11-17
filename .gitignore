@@ -4,3 +4,6 @@
 /vendor_roles/
 /.vagrant/
 /get-pip.py
+
+# ansible-lint cache
+.ansible/

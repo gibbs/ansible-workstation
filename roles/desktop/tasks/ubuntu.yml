@@ -1,48 +1,49 @@
-- name: install deb files from URLs
+---
+- name: Install deb files from URLs
   ansible.builtin.apt:
     deb: "{{ item }}"
   loop: "{{ desktop_deb_urls }}"
   become: true
 
-- name: install desktop base packages
+- name: Install desktop base packages
   ansible.builtin.apt:
     name: "{{ desktop_base_packages }}"
     update_cache: true
   become: true
 
-- name: add apt keys from url
+- name: Add apt keys from url
   ansible.builtin.apt_key:
     url: "{{ item }}"
   loop: "{{ desktop_apt_key_urls }}"
   become: true
 
-- name: add apt keys from fingerprint id
+- name: Add apt keys from fingerprint id
   ansible.builtin.apt_key:
     keyserver: pgp.mit.edu
     id: "{{ item }}"
   loop: "{{ desktop_apt_key_ids }}"
   become: true
 
-- name: add ppa repositories
+- name: Add ppa repositories
   ansible.builtin.apt_repository:
     repo: "{{ item }}"
     state: present
   loop: "{{ desktop_ppa_repositories }}"
   become: true
 
-- name: install ppa packages
+- name: Install ppa packages
   ansible.builtin.apt:
     name: "{{ desktop_ppa_packages }}"
     update_cache: true
   become: true
 
-- name: download qogir icon theme archive
+- name: Download qogir icon theme archive
   ansible.builtin.unarchive:
     src: https://github.com/vinceliuice/Qogir-theme/archive/refs/tags/2022-04-29.zip
     dest: /tmp/
     remote_src: true
 
-- name: run qogir installation script
+- name: Run qogir installation script
   ansible.builtin.command: ./install.sh
   args:
     chdir: /tmp/Qogir-theme-2022-04-29

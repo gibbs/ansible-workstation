@@ -1,3 +1,4 @@
+---
 provision_base_packages:
   - asahi-meta
   - asahi-desktop-meta
@@ -23,3 +24,6 @@ provision_session: sway
 provision_session_type: wayland
 
 provision_console_font: ter-132b
+
+# Dotfiles branch
+provision_dotfiles_version: aarch64

@@ -1,3 +1,4 @@
+---
 desktop_base_packages:
   - acpi
   - alsa-utils
@@ -122,11 +123,20 @@ desktop_pip_packages:
 
 desktop_pip_extra_args: "--user --break-system-packages"
 
-desktop_wayland: true
-# closest to the macOS default but XWayland apps will be blurry.
-desktop_output_internal: eDP-1
-desktop_output_scale: 2
-desktop_cursor_theme: Adwaita
-desktop_cursor_size: 24
-desktop_xkb_layout: gb
-desktop_xkb_variant: mac
+# Dotfiles: sway session and MacBook overrides (outputs, input, HiDPI)
+desktop_stow_packages:
+  - bash
+  - bin
+  - git
+  - ranger
+  - tmux
+  - vim
+  - vscode
+  - xdg
+  - bar
+  - conky
+  - dunst
+  - rofi
+  - wallpapers
+  - sway
+  - host-macbook

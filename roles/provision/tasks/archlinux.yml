@@ -1,10 +1,11 @@
-- name: install provision packages
+---
+- name: Install provision packages
   community.general.pacman:
     name: "{{ provision_base_packages }}"
     update_cache: true
   become: true
 
-- name: add aur_builder user
+- name: Add aur_builder user
   ansible.builtin.user:
     name: aur_builder
     group: wheel
@@ -12,17 +13,17 @@
     home: /var/aur_builder/
   become: true
 
-- name: add aur_builder pacman access
+- name: Add aur_builder pacman access
   ansible.builtin.lineinfile:
     path: /etc/sudoers.d/60-aur_builder
     state: present
-    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     create: true
-    mode: 0600
-    validate: 'visudo -cf %s'
+    mode: "0600"
+    validate: "visudo -cf %s"
   become: true
 
-- name: install yay
+- name: Install yay
   aur:
     name: yay
     use: makepkg
@@ -30,7 +31,7 @@
   become: true
   become_user: aur_builder
 
-- name: install provision aur packages
+- name: Install provision aur packages
   aur:
     name: "{{ item }}"
     use: yay

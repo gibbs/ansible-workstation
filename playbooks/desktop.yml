@@ -1,5 +1,7 @@
-- hosts: all
+---
+- name: Workstation desktop
+  hosts: all
   tasks:
-    - name: desktop role
+    - name: Desktop role
       ansible.builtin.include_role:
         name: desktop
