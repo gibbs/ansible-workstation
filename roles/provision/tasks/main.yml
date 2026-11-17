@@ -1,80 +1,96 @@
 ---
-- name: include os specific variables
-  ansible.builtin.include_vars: "{{ ansible_distribution|lower }}-{{ ansible_distribution_version.split('.')[0]|lower }}.yml"
+- name: Include os specific variables
+  ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found', os_vars) }}"
+  vars:
+    os_vars:
+      files:
+        - "{{ ansible_os_family | lower }}-{{ ansible_architecture }}.yml"
+        - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] | lower }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
 
-- name: copy user-dirs.dirs file
+- name: Copy user-dirs.dirs file
   ansible.builtin.copy:
     src: user-dirs.dirs
     dest: /tmp/user-dirs.dirs
-    mode: 0644
+    mode: "0644"
 
-- name: copy xdg bash script
+- name: Copy xdg bash script
   ansible.builtin.copy:
     src: xdg.sh
     dest: /tmp/xdg.sh
-    mode: 0755
+    mode: "0755"
 
-- name: execute xdg script
+- name: Execute xdg script
   ansible.builtin.command:
     cmd: /tmp/xdg.sh
     creates: /tmp/.xdg-provision
 
-- name: archlinux
-  include_tasks: archlinux.yml
-  when: ansible_distribution|lower == "archlinux"
+- name: Archlinux
+  ansible.builtin.include_tasks: archlinux.yml
+  when: ansible_os_family == "Archlinux"
 
-- name: ubuntu
-  include_tasks: ubuntu.yml
+- name: Ubuntu
+  ansible.builtin.include_tasks: ubuntu.yml
   when: ansible_distribution|lower == "ubuntu"
 
-- name: set timezone
+- name: Set timezone
   community.general.timezone:
     name: "{{ provision_timezone }}"
   become: true
 
-- name: get current locale and language configuration
+- name: Get current locale and language configuration
   ansible.builtin.command: localectl status
-  register: locale_status
+  register: provision_locale_status
   changed_when: false
 
-- name: parse lang from current locale and language configuration
+- name: Parse lang from current locale and language configuration
   ansible.builtin.set_fact:
-    locale_lang: "{{ locale_status.stdout | regex_search('LANG=([^\n]+)', '\\1') | first }}"
-    locale_keymap: "{{ locale_status.stdout | regex_search('VC Keymap: ([^\n]+)', '\\1') | first }}"
-    locale_layout: "{{ locale_status.stdout | regex_search('X11 Layout: ([^\n]+)', '\\1') | first }}"
+    provision_locale_lang: "{{ provision_locale_status.stdout | regex_search('LANG=([^\n]+)', '\\1') | default([''], true) | first }}"
 
-- name: set locale
+- name: Set locale
   ansible.builtin.command:
     cmd: "localectl set-locale LANG={{ provision_locale }}.UTF-8"
-  changed_when: locale_lang != provision_locale
+  when: provision_locale_lang != provision_locale ~ '.UTF-8'
+  changed_when: true
   become: true
 
-- name: set the gdm default session
+- name: Set the gdm default session
   ansible.builtin.copy:
     dest: "/var/lib/AccountsService/users/{{ ansible_user_id }}"
     owner: root
     group: root
-    mode: 0600
+    mode: "0600"
     force: false
     content: |
       [User]
       Language=
-      Session=i3
-      XSession=i3
+      Session={{ provision_session }}
+      XSession={{ provision_session if provision_session_type == 'x11' else '' }}
   become: true
 
-- name: start gdm service
+- name: Set the console font
+  ansible.builtin.lineinfile:
+    path: /etc/vconsole.conf
+    regexp: "^FONT="
+    line: "FONT={{ provision_console_font }}"
+    create: true
+    mode: "0644"
+  when: provision_console_font is defined
+  become: true
+
+- name: Start gdm service
   ansible.builtin.service:
     name: gdm
     enabled: true
   become: true
 
-- name: create various directories
+- name: Create various directories
   ansible.builtin.file:
     path: "{{ item }}"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0755
+    mode: "0755"
     state: directory
   loop:
     - $HOME/.cloud
@@ -85,18 +101,18 @@
     - $HOME/.vim
     - $HOME/.vim/autoload
 
-- name: clone dotfiles
+- name: Clone dotfiles
   ansible.builtin.git:
     repo: "{{ provision_dotfiles_repo }}"
     dest: $HOME/.dotfiles
     force: true
     update: false
-    version: master
+    version: "{{ provision_dotfiles_version }}"
 
-- name: vim plug
+- name: Vim plug
   ansible.builtin.get_url:
     dest: ~/.vim/autoload/plug.vim
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0644
+    mode: "0644"

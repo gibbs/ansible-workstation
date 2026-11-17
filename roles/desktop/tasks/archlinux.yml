@@ -1,12 +1,14 @@
-- name: install desktop base packages
+---
+- name: Install desktop base packages
   community.general.pacman:
     name: "{{ desktop_base_packages }}"
     update_cache: true
   become: true
 
-- name: install desktop aur packages
+- name: Install desktop aur packages
   aur:
     name: "{{ item }}"
     use: yay
     state: present
+    extra_args: "{{ desktop_aur_extra_args | default(omit) }}"
   loop: "{{ desktop_aur_packages }}"

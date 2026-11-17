@@ -1,0 +1,29 @@
+---
+provision_base_packages:
+  - asahi-meta
+  - asahi-desktop-meta
+  - linux-asahi-headers
+  - base-devel
+  - bash
+  - gdm
+  - git
+  - i3blocks
+  - sway
+  - swaybg
+  - swayidle
+  - terminus-font
+  - ttc-iosevka
+  - vim
+  - wget
+  - xorg-xwayland
+
+provision_aur_packages:
+  - rofi-git
+
+provision_session: sway
+provision_session_type: wayland
+
+provision_console_font: ter-132b
+
+# Dotfiles branch
+provision_dotfiles_version: aarch64

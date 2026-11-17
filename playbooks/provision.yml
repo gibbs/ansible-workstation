@@ -1,5 +1,7 @@
-- hosts: all
+---
+- name: Workstation provision
+  hosts: all
   tasks:
-    - name: provision role
+    - name: Provision role
       ansible.builtin.include_role:
         name: provision

@@ -1,31 +1,40 @@
-- name: include os specific variables
-  ansible.builtin.include_vars: "{{ ansible_distribution|lower }}-{{ ansible_distribution_version.split('.')[0]|lower }}.yml"
+---
+- name: Include os specific variables
+  ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found', os_vars) }}"
+  vars:
+    os_vars:
+      files:
+        - "{{ ansible_os_family | lower }}-{{ ansible_architecture }}.yml"
+        - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] | lower }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
 
-- name: archlinux
+- name: Archlinux
   ansible.builtin.include_tasks: archlinux.yml
-  when: ansible_distribution|lower == "archlinux"
+  when: ansible_os_family == "Archlinux"
 
-- name: ubuntu
+- name: Ubuntu
   ansible.builtin.include_tasks: ubuntu.yml
   when: ansible_distribution|lower == "ubuntu"
 
-- name: install pip packages
+- name: Install pip packages
   ansible.builtin.pip:
     name: "{{ item }}"
     state: present
+    extra_args: "{{ desktop_pip_extra_args | default(omit) }}"
   loop: "{{ desktop_pip_packages }}"
 
-- name: ssh initial keygen
+- name: Ssh initial keygen
   ansible.builtin.command:
     cmd: ssh-keygen -f ~/.ssh/id_rsa -q -N ''
     creates: ~/.ssh/id_rsa
 
-- name: create various directories
+- name: Create various directories
   ansible.builtin.file:
     path: "{{ item }}"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0755
+    mode: "0755"
     state: directory
   loop:
     - $HOME/.config/gtk-3.0/
@@ -40,21 +49,21 @@
     - $HOME/.dropbox/
     - $HOME/virtualbox
 
-- name: create dropbox symlink
+- name: Create dropbox symlink
   ansible.builtin.file:
     src: $HOME/.cloud/dropbox/Dropbox
     dest: $HOME/dropbox
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0755
+    mode: "0755"
     state: link
 
-- name: set gtk 3.0 settings
+- name: Set gtk 3.0 settings
   ansible.builtin.copy:
     dest: "~/.config/gtk-3.0/settings.ini"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0644
+    mode: "0644"
     force: false
     content: |
       [Settings]
@@ -63,12 +72,12 @@
       gtk-icon-theme-name={{ desktop_gtk_icon_theme }}
       gtk-font-name={{ desktop_gtk_default_font }}
 
-- name: set gtk 4.0 settings
+- name: Set gtk 4.0 settings
   ansible.builtin.copy:
     dest: "~/.config/gtk-4.0/settings.ini"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0644
+    mode: "0644"
     force: false
     content: |
       [Settings]
@@ -77,23 +86,23 @@
       gtk-icon-theme-name={{ desktop_gtk_icon_theme }}
       gtk-font-name={{ desktop_gtk_default_font }}
 
-- name: clone i3blocks-contrib
+- name: Clone i3blocks-contrib
   ansible.builtin.git:
     repo: https://github.com/vivien/i3blocks-contrib
     dest: ~/.config/i3blocks/contrib/
     update: false
     version: v2.0.0
 
-- name: virtualbox initial config
+- name: Virtualbox initial config
   ansible.builtin.template:
     dest: $HOME/.config/VirtualBox/VirtualBox.xml
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
-    mode: 0600
+    mode: "0600"
     src: virtualbox.xml.j2
     force: false
 
-- name: git clone bash_it
+- name: Git clone bash_it
   ansible.builtin.git:
     repo: https://github.com/Bash-it/bash-it.git
     dest: ~/.bash_it
@@ -101,23 +110,23 @@
     version: v2.1.4
     update: false
 
-- name: install bash_it
+- name: Install bash_it
   ansible.builtin.command:
     cmd: ~/.bash_it/install.sh
     creates: ~/.bashrc.bak
 
-- name: copy stow bash script
+- name: Copy stow bash script
   ansible.builtin.copy:
     src: stow.sh
     dest: ~/bin/stow-setup
-    mode: 0755
+    mode: "0755"
 
-- name: execute stow script
+- name: Execute stow script
   ansible.builtin.command:
-    cmd: ~/bin/stow-setup
+    cmd: "~/bin/stow-setup {{ desktop_stow_packages | join(' ') }}"
     creates: ~/tmp/.stow-setup
 
-- name: vscode extensions
+- name: Vscode extensions
   ansible.builtin.command:
     cmd: "code --install-extension {{ item }}"
     creates: "~/.vscode/extensions/{{ item }}*"
