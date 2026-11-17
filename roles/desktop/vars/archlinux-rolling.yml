@@ -55,10 +55,8 @@ desktop_base_packages:
   - man
   - meld
   - nautilus
-  - neovim
   - openbsd-netcat
   - openconnect
-  - nextcloud
   - networkmanager
   - networkmanager-openconnect
   - networkmanager-openvpn
@@ -86,9 +84,6 @@ desktop_base_packages:
   - torbrowser-launcher
   - ttf-font-awesome
   - ttf-ibm-plex
-  - vagrant
-  - virtualbox
-  - virtualbox-host-dkms
   - vlc
   - whois
   - wireguard-tools
@@ -100,7 +95,6 @@ desktop_base_packages:
 desktop_aur_packages:
   - bruno
   - clipster
-  - dbeaver-ee
   - dive
   - google-chrome
   - gnome-terminal-transparency
@@ -113,6 +107,5 @@ desktop_aur_packages:
   - qogir-icon-theme
   - qgnomeplatform
   - rvm
-  - torguard
   - visual-studio-code-bin
   - zeal
