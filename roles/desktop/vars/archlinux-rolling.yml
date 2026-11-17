@@ -69,6 +69,7 @@ desktop_base_packages:
   - ntfs-3g
   - nmap
   - npm
+  - otf-font-awesome
   - pass
   - pacman-contrib
   - polkit-gnome
