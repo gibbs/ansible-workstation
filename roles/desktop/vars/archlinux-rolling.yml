@@ -1,19 +1,19 @@
 desktop_base_packages:
   - acpi
-  - arc-gtk-theme
   - alsa-utils
   - baobab
   - bc
+  - bind
   - bitwarden
   - chromium
   - conky
-  - deluge-gtk
   - dbeaver
+  - deluge-gtk
+  - dive
   - docker
   - docker-compose
   - dosfstools
   - dpkg
-  - dnsutils
   - dunst
   - eog
   - evince
@@ -21,10 +21,10 @@ desktop_base_packages:
   - evolution-bogofilter
   - evolution-on
   - fakeroot
-  - firefox
-  - firefox-developer-edition
   - ffmpeg
   - file-roller
+  - firefox
+  - firefox-developer-edition
   - gedit
   - gimp
   - gnome-calculator
@@ -40,72 +40,83 @@ desktop_base_packages:
   - gparted
   - gvfs
   - gvfs-goa
-  - gvfs-google
   - gvfs-mtp
   - gvfs-nfs
   - htop
   - hunspell
   - hunspell-en_gb
   - jq
+  - libreoffice-fresh
   - libsecret
   - libxcrypt-compat
-  - libreoffice-fresh
-  - lxappearance
   - lshw
-  - man
+  - lxappearance
+  - man-db
   - meld
   - nautilus
-  - openbsd-netcat
-  - openconnect
+  - network-manager-applet
   - networkmanager
   - networkmanager-openconnect
   - networkmanager-openvpn
   - networkmanager-pptp
   - networkmanager-vpnc
-  - network-manager-applet
-  - nitrogen
-  - ntfs-3g
   - nmap
   - npm
+  - ntfs-3g
+  - nvm
+  - openbsd-netcat
+  - openconnect
   - otf-font-awesome
-  - pass
   - pacman-contrib
+  - pamixer
+  - pass
+  - pavucontrol
   - polkit-gnome
   - procps-ng
+  - python-gobject
+  - python-i3ipc
+  - python-pip
   - ranger
   - rhythmbox
   - rpm-tools
   - seahorse
   - smartmontools
   - stow
+  - sysstat
   - terraform
-  - tmux
   - thunderbird
+  - tmux
   - torbrowser-launcher
-  - ttf-font-awesome
   - ttf-ibm-plex
   - vlc
   - whois
   - wireguard-tools
+  - woff2-font-awesome
   - xorg-xdpyinfo
   - xorg-xev
   - xorg-xprop
   - xorg-xrandr
+  - zeal
 
 desktop_aur_packages:
+  - arc-gtk-theme
   - bruno
   - clipster
-  - dive
-  - google-chrome
   - gnome-terminal-transparency
-  - mkinitcpio-firmware
-  - nvm
+  - google-chrome
   - i3lock-fancy-dualmonitors-git
+  - mkinitcpio-firmware
+  - nitrogen
   - powerline-fonts-git
   - powerline-shell-git
   - puppet-bolt
-  - qogir-icon-theme
   - qgnomeplatform
+  - qogir-icon-theme
   - rvm
   - visual-studio-code-bin
-  - zeal
+
+desktop_pip_packages:
+  - fontawesome
+  - fontawesome47
+
+desktop_pip_extra_args: "--user --break-system-packages"

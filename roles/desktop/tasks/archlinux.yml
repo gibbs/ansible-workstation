@@ -9,4 +9,5 @@
     name: "{{ item }}"
     use: yay
     state: present
+    extra_args: "{{ desktop_aur_extra_args | default(omit) }}"
   loop: "{{ desktop_aur_packages }}"

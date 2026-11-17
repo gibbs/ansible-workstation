@@ -30,8 +30,9 @@
   become: true
   become_user: aur_builder
 
-- name: install i3blocks
+- name: install provision aur packages
   aur:
-    name: i3blocks
+    name: "{{ item }}"
     use: yay
     state: present
+  loop: "{{ provision_aur_packages }}"

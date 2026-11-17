@@ -1,6 +1,13 @@
 ---
 - name: include os specific variables
-  ansible.builtin.include_vars: "{{ ansible_distribution|lower }}-{{ ansible_distribution_version.split('.')[0]|lower }}.yml"
+  ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found', os_vars) }}"
+  vars:
+    os_vars:
+      files:
+        - "{{ ansible_os_family | lower }}-{{ ansible_architecture }}.yml"
+        - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] | lower }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
 
 - name: copy user-dirs.dirs file
   ansible.builtin.copy:
@@ -21,7 +28,7 @@
 
 - name: archlinux
   include_tasks: archlinux.yml
-  when: ansible_distribution|lower == "archlinux"
+  when: ansible_os_family == "Archlinux"
 
 - name: ubuntu
   include_tasks: ubuntu.yml
@@ -59,8 +66,18 @@
     content: |
       [User]
       Language=
-      Session=i3
-      XSession=i3
+      Session={{ provision_session }}
+      XSession={{ provision_session if provision_session_type == 'x11' else '' }}
+  become: true
+
+- name: set the console font
+  ansible.builtin.lineinfile:
+    path: /etc/vconsole.conf
+    regexp: '^FONT='
+    line: "FONT={{ provision_console_font }}"
+    create: true
+    mode: 0644
+  when: provision_console_font is defined
   become: true
 
 - name: start gdm service

@@ -3,10 +3,13 @@ provision_base_packages:
   - bash
   - gdm
   - git
-  - i3-gaps
+  - i3-wm
   - i3status
   - linux-headers
   - rofi
   - ttc-iosevka
   - vim
   - wget
+
+provision_aur_packages:
+  - i3blocks

@@ -1,0 +1,132 @@
+desktop_base_packages:
+  - acpi
+  - alsa-utils
+  - baobab
+  - bc
+  - bind
+  - brightnessctl
+  - chromium
+  - cliphist
+  - conky
+  - deluge-gtk
+  - dive
+  - docker
+  - docker-compose
+  - dosfstools
+  - dpkg
+  - dunst
+  - eog
+  - evince
+  - evolution
+  - evolution-bogofilter
+  - evolution-on
+  - fakeroot
+  - ffmpeg
+  - file-roller
+  - firefox
+  - gedit
+  - gimp
+  - gnome-calculator
+  - gnome-calendar
+  - gnome-control-center
+  - gnome-font-viewer
+  - gnome-keyring
+  - gnome-nettool
+  - gnome-online-accounts
+  - gnome-terminal
+  - gnupg
+  - gparted
+  - grim
+  - gvfs
+  - gvfs-goa
+  - gvfs-mtp
+  - gvfs-nfs
+  - htop
+  - hunspell
+  - hunspell-en_gb
+  - jq
+  - kitty
+  - libreoffice-fresh
+  - libsecret
+  - libxcrypt-compat
+  - lshw
+  - man-db
+  - meld
+  - nautilus
+  - network-manager-applet
+  - networkmanager
+  - networkmanager-openconnect
+  - networkmanager-openvpn
+  - networkmanager-pptp
+  - networkmanager-vpnc
+  - nmap
+  - npm
+  - ntfs-3g
+  - nvm
+  - nwg-look
+  - openbsd-netcat
+  - openconnect
+  - otf-font-awesome
+  - pacman-contrib
+  - pamixer
+  - pass
+  - polkit-gnome
+  - procps-ng
+  - python-gobject
+  - python-i3ipc
+  - python-pip
+  - ranger
+  - rhythmbox
+  - rpm-tools
+  - seahorse
+  - slurp
+  - smartmontools
+  - stow
+  - sysstat
+  - terraform
+  - thunderbird
+  - tmux
+  - torbrowser-launcher
+  - ttf-ibm-plex
+  - vlc
+  - wev
+  - whois
+  - wireguard-tools
+  - wl-clipboard
+  - wlr-randr
+  - woff2-font-awesome
+  - xdg-desktop-portal-gtk
+  - xdg-desktop-portal-wlr
+  - xorg-xprop
+  - zeal
+
+desktop_aur_packages:
+  - arc-gtk-theme
+  - bitwarden-bin
+  - dbeaver-ce-bin
+  - gnome-terminal-transparency
+  - google-chrome
+  - powerline-fonts-git
+  - powerline-shell-git
+  - qgnomeplatform
+  - qogir-icon-theme
+  - rvm
+  - swaylock-effects
+  - visual-studio-code-bin
+
+desktop_aur_extra_args: "--mflags --ignorearch"
+
+desktop_pip_packages:
+  - fontawesome
+  - fontawesome47
+
+desktop_pip_extra_args: "--user --break-system-packages"
+
+desktop_wayland: true
+# closest to the macOS default but XWayland apps will be blurry.
+desktop_output_internal: eDP-1
+desktop_output_scale: 2
+desktop_cursor_theme: Adwaita
+desktop_cursor_size: 24
+desktop_xkb_layout: gb
+desktop_xkb_variant: mac

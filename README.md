@@ -13,6 +13,8 @@ Install [Arch Linux](https://archlinux.org/) or
 [Ubuntu Jammy LTS](https://ubuntu.com/download/server) with networking
 configured.
 
+Apple Silicon (M1/M2) is supported via [Asahi ALARM](https://asahi-alarm.org/).
+
 ## Quick Start
 
 ```bash

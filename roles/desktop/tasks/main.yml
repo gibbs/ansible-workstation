@@ -1,9 +1,16 @@
 - name: include os specific variables
-  ansible.builtin.include_vars: "{{ ansible_distribution|lower }}-{{ ansible_distribution_version.split('.')[0]|lower }}.yml"
+  ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found', os_vars) }}"
+  vars:
+    os_vars:
+      files:
+        - "{{ ansible_os_family | lower }}-{{ ansible_architecture }}.yml"
+        - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] | lower }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
 
 - name: archlinux
   ansible.builtin.include_tasks: archlinux.yml
-  when: ansible_distribution|lower == "archlinux"
+  when: ansible_os_family == "Archlinux"
 
 - name: ubuntu
   ansible.builtin.include_tasks: ubuntu.yml
@@ -13,6 +20,7 @@
   ansible.builtin.pip:
     name: "{{ item }}"
     state: present
+    extra_args: "{{ desktop_pip_extra_args | default(omit) }}"
   loop: "{{ desktop_pip_packages }}"
 
 - name: ssh initial keygen
@@ -48,6 +56,43 @@
     group: "{{ ansible_user_id }}"
     mode: 0755
     state: link
+
+- name: wayland session config
+  when: desktop_wayland
+  block:
+    - name: create wayland config directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        mode: 0755
+        state: directory
+      loop:
+        - ~/.config/sway
+        - ~/.config/environment.d
+        - ~/pics
+
+    - name: sway config
+      ansible.builtin.template:
+        src: sway.config.j2
+        dest: ~/.config/sway/config
+        mode: 0644
+        force: false
+
+    - name: wayland session environment
+      ansible.builtin.template:
+        src: environment.conf.j2
+        dest: ~/.config/environment.d/50-wayland.conf
+        mode: 0644
+
+    - name: chromium based browser wayland flags
+      ansible.builtin.copy:
+        dest: "~/.config/{{ item }}"
+        mode: 0644
+        content: |
+          --ozone-platform-hint=auto
+          --enable-features=TouchpadOverscrollHistoryNavigation
+      loop:
+        - chromium-flags.conf
+        - chrome-flags.conf
 
 - name: set gtk 3.0 settings
   ansible.builtin.copy:
